@@ -21,7 +21,7 @@ class SummernoteAsset extends BaseAsset
     /**
      * @inheritdoc
      */
-    public $baseUrl = '//cdn.jsdelivr.net/npm/summernote@0.8.18/dist';
+    public $baseUrl = '//cdn.jsdelivr.net/npm/summernote@0.8.20/dist';
 
     /**
      * @inheritdoc
@@ -29,8 +29,8 @@ class SummernoteAsset extends BaseAsset
     public function init()
     {
         $asset = !$this->isBs(3) ? 'summernote-bs4' : 'summernote';
-        $this->setupAssets('css', [$asset]);
-        $this->setupAssets('js', [$asset]);
+        $this->setupAssets('css', [$asset . '.min.css']);
+        $this->setupAssets('js', [$asset . '.min.js']);
         parent::init();
     }
 
@@ -44,6 +44,6 @@ class SummernoteAsset extends BaseAsset
         if (empty($lang) || substr($lang, 0, 2) == 'en') {
             return $this;
         }
-        return $this->setAssetFile('js', "lang/summernote-{$lang}");
+        return $this->setAssetFile('js', "lang/summernote-{$lang}.min.js");
     }
 }
